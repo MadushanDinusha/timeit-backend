@@ -178,14 +178,14 @@ public class UserController {
     @PostMapping("/task/save/{name}")
     public ResponseEntity<?> saveTask(@RequestBody Task task, @PathVariable("name") String name) {
         try {
-//            SimpleDateFormat gmtDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            gmtDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-//            String fromDate = gmtDateFormat.format(task.getFromDate());
-//            String toDate = gmtDateFormat.format(task.getToDate());
-//            Timestamp convertedFromDate = Timestamp.valueOf(fromDate);
-//            Timestamp convertedToDate = Timestamp.valueOf(toDate);
-//            task.setFromDate(convertedFromDate);
-//            task.setToDate(convertedToDate);
+           SimpleDateFormat gmtDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+           gmtDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+           String fromDate = gmtDateFormat.format(task.getFromDate());
+           String toDate = gmtDateFormat.format(task.getToDate());
+           Timestamp convertedFromDate = Timestamp.valueOf(fromDate);
+           Timestamp convertedToDate = Timestamp.valueOf(toDate);
+           task.setFromDate(convertedFromDate);
+           task.setToDate(convertedToDate);
              System.out.println(task.getFromDate());
             User user = new User();
             user.setId(userService.getUserId(name));
