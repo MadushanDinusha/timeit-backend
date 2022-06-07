@@ -256,8 +256,9 @@ public class UserController {
         try {
             vacation.setStatus(Vacation.Status.pending);
             vacationService.saveVacation(vacation, name);
-
-            mailService.sendmail(name,"kasper.franklin.nielsen@tryg.dk","djabc.pwc@gmail.com", vacation.getFromDate(),vacation.getToDate(),
+            long id = userService.getUserId(name);
+            String userMail = userService.getUserById(id).get().getEmail();
+            mailService.sendmail(name,"kasper.franklin.nielsen@tryg.dk",userMail, vacation.getFromDate(),vacation.getToDate(),
                     vacation.getComment());
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
@@ -306,8 +307,9 @@ public class UserController {
         }
     }
 
-    @GetMapping("updateStatus/{status}/{id}")
-    public ResponseEntity<?> updateStatus(@PathVariable("status") String status, @PathVariable("id") long id){
+    @GetMapping("updateStatus/{status}/{id}/{userId}")
+    public ResponseEntity<?> updateStatus(@PathVariable("status") String status, @PathVariable("id") long id,
+                                          @PathVariable("userId") long userId){
         try {
             Optional<Vacation> vacation = vacationService.getById(id);
             if(status.equals("approved")){
@@ -316,7 +318,8 @@ public class UserController {
             }else if(status.equals("rejected")){
                 vacation.get().setStatus(Vacation.Status.Rejected);
             }
-            mailService.sendmailApprove("djabc.pwc@gmail.com","mdinushaw@gmail.com",vacation.get().getStatus().name());
+            String userMail = userService.getUserById(userId).get().getEmail();
+            mailService.sendmailApprove(userMail,"kasper.franklin.nielsen@tryg.dk",vacation.get().getStatus().name());
             vacationService.upDateVacation(vacation.get());
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
