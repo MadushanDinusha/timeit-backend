@@ -202,6 +202,7 @@ public class UserController {
     public ResponseEntity<List<Task>> getAllTasks(@PathVariable("name") String name) {
         try {
             List<Task> tasks = taskService.getAllTasksByUser(name);
+            System.out.println(tasks);
             return new ResponseEntity<>(tasks, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
