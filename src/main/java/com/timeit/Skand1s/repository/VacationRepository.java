@@ -22,4 +22,7 @@ public interface VacationRepository extends JpaRepository<Vacation,Long> {
 
     @Query("Select user.user_id FROM Vacation WHERE id = :id")
     long  getUserForVacations(long id);
+
+    @Query("SELECT v FROM Vacation v WHERE v.status = 1")
+    List<Vacation> getAllPending();
 }

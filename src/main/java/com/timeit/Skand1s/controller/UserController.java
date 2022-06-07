@@ -354,4 +354,31 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("getNumberOfTasks")
+    public ResponseEntity<Number> getMonthlyNumberOfTasks(){
+        try {
+            return new ResponseEntity<>(taskService.getMonthlyNumberOfTasks(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getUserCount")
+    public ResponseEntity<Number> getUserCount(){
+        try {
+            return new ResponseEntity<>(userService.getUserCount(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getPending")
+    public ResponseEntity<Number> getPending(){
+        try {
+            return new ResponseEntity<>(vacationService.getPending(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

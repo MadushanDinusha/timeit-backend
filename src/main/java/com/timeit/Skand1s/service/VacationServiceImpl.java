@@ -54,4 +54,10 @@ public class VacationServiceImpl implements VacationService {
     public void upDateVacation(Vacation vacation) {
         vacationRepository.save(vacation);
     }
+
+    @Override
+    public int getPending() {
+        List<Vacation> vacations = vacationRepository.getAllPending();
+        return vacations.size();
+    }
 }

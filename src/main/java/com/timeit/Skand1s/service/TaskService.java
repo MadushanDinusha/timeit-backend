@@ -11,4 +11,5 @@ public interface TaskService {
     List<Task> getUserTasks(String name);
     List<Task> getAllTasksByUser(String name);
     void updateTaskToDone(long id);
+    int getMonthlyNumberOfTasks();
 }

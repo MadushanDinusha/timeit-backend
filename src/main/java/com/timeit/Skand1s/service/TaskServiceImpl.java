@@ -63,4 +63,10 @@ public class TaskServiceImpl implements TaskService{
     public void updateTaskToDone(long id) {
         taskRepository.updateTask(id);
     }
+
+    @Override
+    public int getMonthlyNumberOfTasks() {
+        List<Task> tasks = taskRepository.getMonthlyTasks();
+        return tasks.size();
+    }
 }

@@ -5,6 +5,7 @@ import com.timeit.Skand1s.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,5 +47,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<User> getUserById(long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public int getUserCount() {
+        List<User> users = userRepository.getUserCount();
+        return users.size();
     }
 }

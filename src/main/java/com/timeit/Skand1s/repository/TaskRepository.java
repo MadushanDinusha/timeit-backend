@@ -27,6 +27,7 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     @Query("SELECT t FROM Task t WHERE t.user.user_id = :user_id")
     List<Task> getAllTasksByUserId(long user_id);
 
-
+    @Query("SELECT t FROM Task t WHERE t.isActive=1")
+    List<Task> getMonthlyTasks();
 
 }

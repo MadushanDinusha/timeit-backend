@@ -12,4 +12,5 @@ public interface VacationService {
     long getUsersForVacations(long id);
     Optional<Vacation> getById(long id);
     void upDateVacation(Vacation vacation);
+    int getPending();
 }
