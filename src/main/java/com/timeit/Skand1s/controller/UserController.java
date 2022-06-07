@@ -186,6 +186,7 @@ public class UserController {
 //            Timestamp convertedToDate = Timestamp.valueOf(toDate);
 //            task.setFromDate(convertedFromDate);
 //            task.setToDate(convertedToDate);
+             System.out.println(task.getFromDate());
             User user = new User();
             user.setId(userService.getUserId(name));
             task.setUser(user);
