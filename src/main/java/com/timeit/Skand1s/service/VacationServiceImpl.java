@@ -66,7 +66,7 @@ public class VacationServiceImpl implements VacationService {
         User user = userRepository.getUserByUsername(name);
         long userId = user.getId();
         List<Vacation> list = vacationRepository.findByUserName(userId);
-
+        System.out.println(list);
         return list.size();
     }
 }
