@@ -60,4 +60,13 @@ public class VacationServiceImpl implements VacationService {
         List<Vacation> vacations = vacationRepository.getAllPending();
         return vacations.size();
     }
+
+    @Override
+    public int getNumberOfDays(String name) {
+        User user = userRepository.getUserByUsername(name);
+        long userId = user.getId();
+        List<Vacation> list = vacationRepository.findByUserName(userId);
+
+        return list.size();
+    }
 }

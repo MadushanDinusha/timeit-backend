@@ -13,4 +13,5 @@ public interface VacationService {
     Optional<Vacation> getById(long id);
     void upDateVacation(Vacation vacation);
     int getPending();
+    int getNumberOfDays(String name);
 }
