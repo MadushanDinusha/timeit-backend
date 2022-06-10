@@ -7,7 +7,7 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})}, name = "users")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","schedules"})
 public class User {
 
@@ -16,8 +16,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
-    @Column(unique = true)
+    @Column(unique=true)
     private String username;
+
     private String password;
     private boolean enabled;
     private String fullName;

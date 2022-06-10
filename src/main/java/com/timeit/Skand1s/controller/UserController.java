@@ -40,6 +40,7 @@ public class UserController {
     MailService mailService;
 
 
+
     @GetMapping(path = "/basicauth")
     public AuthenticationBean user(Principal user) {
         return new AuthenticationBean("You are authenticated");
@@ -380,6 +381,15 @@ public class UserController {
     public ResponseEntity<Number> getPending(){
         try {
             return new ResponseEntity<>(vacationService.getPending(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getVacationDays/{name}")
+    public ResponseEntity<Number> getVacations(@PathVariable("name") String name){
+        try {
+            return new ResponseEntity<>(vacationService.getNumberOfDays(name),HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
