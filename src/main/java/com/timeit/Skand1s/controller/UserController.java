@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@CrossOrigin(origins = "http://time-it-app.herokuapp.com")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -38,7 +38,6 @@ public class UserController {
     ScheduleService scheduleService;
     @Autowired
     MailService mailService;
-
 
 
     @GetMapping(path = "/basicauth")
@@ -381,15 +380,6 @@ public class UserController {
     public ResponseEntity<Number> getPending(){
         try {
             return new ResponseEntity<>(vacationService.getPending(),HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping("getVacationDays/{name}")
-    public ResponseEntity<Number> getVacations(@PathVariable("name") String name){
-        try {
-            return new ResponseEntity<>(vacationService.getNumberOfDays(name),HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
