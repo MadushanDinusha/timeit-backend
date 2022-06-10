@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://time-it-app.herokuapp.com")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
