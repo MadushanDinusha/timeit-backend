@@ -74,13 +74,6 @@ public class VacationServiceImpl implements VacationService {
         return list;
     }
 
-
-    @Override
-    public int getUsersOnVac() {
-//       List<Vacation> vacations =  vacationRepository.getUsersOnVac();
-        return 0;
-    }
-
     public Timestamp getSysDate(){
         Timestamp now = Timestamp.valueOf(LocalDateTime.now());
         return now;
@@ -92,7 +85,6 @@ public class VacationServiceImpl implements VacationService {
         LocalDateTime now = LocalDateTime.now();
         List<Vacation> vacations = vacationRepository.getAllApprovedVacations();
         List<Vacation> onGoingVac = new ArrayList<>();
-        System.out.println("on"+onGoingVac);
         for (Vacation vacation : vacations){
             int toValue = sdf.format(vacation.getToDate()).compareTo(sdf.format(getSysDate()));
             int fromValue = sdf.format(vacation.getFromDate()).compareTo(sdf.format(getSysDate()));
@@ -100,7 +92,6 @@ public class VacationServiceImpl implements VacationService {
                 onGoingVac.add(vacation);
             }else if(toValue <=0){
                 vacation.setStatus(Vacation.Status.Done);
-                System.out.println("up"+vacation);
                 upDateVacation(vacation);
             }
         }
