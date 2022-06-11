@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/getTasks/**").permitAll()
                 .antMatchers("/api/v1/task/getNumberOfTasks/**").permitAll()
                 .antMatchers("/api/v1/getUsersByUserName/**").permitAll()
-                .antMatchers("/api/v1/task/save/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/api/v1/task/save/**").permitAll()
                 .antMatchers("/api/v1/getUsers").permitAll()
                 .antMatchers("/api/v1/user/save/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/api/v1/task/updateTask/**").permitAll()
