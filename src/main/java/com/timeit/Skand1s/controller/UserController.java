@@ -350,10 +350,10 @@ public class UserController {
         }
     }
 
-    @GetMapping("getAllSchedule")
-    public ResponseEntity<List<Schedule>> getAll(){
+    @GetMapping("getAllTasks")
+    public ResponseEntity<List<Task>> getAll(){
         try {
-            return new ResponseEntity<>( scheduleService.getAll(),HttpStatus.OK);
+            return new ResponseEntity<>( taskService.getAll(),HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

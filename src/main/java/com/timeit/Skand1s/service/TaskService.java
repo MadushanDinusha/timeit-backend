@@ -1,5 +1,6 @@
 package com.timeit.Skand1s.service;
 
+import com.timeit.Skand1s.domain.Schedule;
 import com.timeit.Skand1s.domain.Task;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface TaskService {
     List<Task> getAllTasksByUser(String name);
     void updateTaskToDone(long id);
     int getMonthlyNumberOfTasks();
+    List<Task> getAll();
 }

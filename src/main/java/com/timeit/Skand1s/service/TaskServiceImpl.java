@@ -1,5 +1,6 @@
 package com.timeit.Skand1s.service;
 
+import com.timeit.Skand1s.domain.Schedule;
 import com.timeit.Skand1s.domain.Task;
 import com.timeit.Skand1s.repository.TaskRepository;
 import com.timeit.Skand1s.repository.UserRepository;
@@ -68,5 +69,10 @@ public class TaskServiceImpl implements TaskService{
     public int getMonthlyNumberOfTasks() {
         List<Task> tasks = taskRepository.getMonthlyTasks();
         return tasks.size();
+    }
+
+    @Override
+    public List<Task> getAll() {
+        return taskRepository.findAll();
     }
 }
