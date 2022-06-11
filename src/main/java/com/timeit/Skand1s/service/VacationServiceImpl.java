@@ -62,11 +62,11 @@ public class VacationServiceImpl implements VacationService {
     }
 
     @Override
-    public int getNumberOfDays(String name) {
+    public List<Vacation> getNumberOfDays(String name) {
         User user = userRepository.getUserByUsername(name);
         long userId = user.getId();
         List<Vacation> list = vacationRepository.findByUserName(userId);
 //        System.out.println(list);
-        return list.size();
+        return list;
     }
 }

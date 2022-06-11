@@ -387,7 +387,7 @@ public class UserController {
     }
 
     @GetMapping("getVacationDays/{name}")
-    public ResponseEntity<Number> getVacations(@PathVariable("name") String name){
+    public ResponseEntity<List<Vacation>> getVacations(@PathVariable("name") String name){
         try {
             return new ResponseEntity<>(vacationService.getNumberOfDays(name),HttpStatus.OK);
         }catch (Exception e){
