@@ -398,7 +398,7 @@ public class UserController {
     @GetMapping("userOnVac")
     public ResponseEntity<Integer> getUsersOnVac(){
         try {
-            return new ResponseEntity<>(vacationService.getUsersOnVac(),HttpStatus.OK);
+            return new ResponseEntity<>(vacationService.changeVacationToDone(),HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
