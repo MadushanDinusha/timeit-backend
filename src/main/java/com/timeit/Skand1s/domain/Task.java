@@ -79,6 +79,10 @@ public class Task {
         this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
