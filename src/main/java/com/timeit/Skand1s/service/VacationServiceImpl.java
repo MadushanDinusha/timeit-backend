@@ -7,6 +7,11 @@ import com.timeit.Skand1s.repository.VacationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,7 +71,37 @@ public class VacationServiceImpl implements VacationService {
         User user = userRepository.getUserByUsername(name);
         long userId = user.getId();
         List<Vacation> list = vacationRepository.findByUserName(userId);
-//        System.out.println(list);
         return list;
+    }
+
+
+    @Override
+    public int getUsersOnVac() {
+//       List<Vacation> vacations =  vacationRepository.getUsersOnVac();
+        return 0;
+    }
+
+    public Timestamp getSysDate(){
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now());
+        return now;
+    }
+
+    @Override
+    public int changeVacationToDone() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        List<Vacation> vacations = vacationRepository.getAllApprovedVacations();
+        List<Vacation> onGoingVac = new ArrayList<>();
+        for (Vacation vacation : vacations){
+            int toValue = sdf.format(vacation.getToDate()).compareTo(sdf.format(getSysDate()));
+            int fromValue = sdf.format(vacation.getFromDate()).compareTo(sdf.format(getSysDate()));
+            if( fromValue <=0 && toValue>=0){
+                onGoingVac.add(vacation);
+            }else if(toValue <=0){
+                vacation.setStatus(Vacation.Status.Done);
+                upDateVacation(vacation);
+            }
+        }
+        return onGoingVac.size();
     }
 }

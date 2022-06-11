@@ -27,7 +27,8 @@ public class Vacation {
     public enum Status{
         Completed,
         pending,
-        Rejected
+        Rejected,
+        Done
     }
 
     private Status status;

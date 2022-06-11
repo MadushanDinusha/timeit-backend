@@ -25,4 +25,9 @@ public interface VacationRepository extends JpaRepository<Vacation,Long> {
 
     @Query("SELECT v FROM Vacation v WHERE v.status = 1")
     List<Vacation> getAllPending();
+
+    @Query("SELECT v FROM Vacation v WHERE v.status = 0")
+    List<Vacation> getAllApprovedVacations();
+
+
 }

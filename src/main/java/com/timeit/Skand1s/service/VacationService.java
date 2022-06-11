@@ -14,4 +14,6 @@ public interface VacationService {
     void upDateVacation(Vacation vacation);
     int getPending();
     List<Vacation>  getNumberOfDays(String name);
+    int getUsersOnVac();
+    int changeVacationToDone();
 }
