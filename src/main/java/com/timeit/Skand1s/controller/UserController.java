@@ -320,7 +320,7 @@ public class UserController {
                 vacation.get().setStatus(Vacation.Status.Rejected);
             }
             String userMail = userService.getUserById(userId).get().getEmail();
-            mailService.sendmailApprove(userMail,"kasper.franklin.nielsen@tryg.dk",vacation.get().getStatus().name());
+//            mailService.sendmailApprove(userMail,"kasper.franklin.nielsen@tryg.dk",vacation.get().getStatus().name());
             vacationService.upDateVacation(vacation.get());
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
