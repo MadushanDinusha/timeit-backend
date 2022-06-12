@@ -252,14 +252,17 @@ public class UserController {
         }
     }
 
-    @PostMapping("updateTask")
-    public ResponseEntity<?> updateTasks(@RequestBody Task task){
+    @PostMapping("updateTask/{name}")
+    public ResponseEntity<?> updateTasks(@PathVariable("name") String name, @RequestBody Task task){
         try{
             Task taskUp = taskService.getTaskById(task.getId());
             taskUp.setUser(task.getUser());
             taskUp.setFromDate(task.getFromDate());
             taskUp.setToDate(task.getToDate());
+           Optional<User> user =  userService.getUserById(userService.getUserId(name));
+           taskUp.setUser(user.get());
             taskService.updateTask(taskUp);
+
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             System.out.println(e);
