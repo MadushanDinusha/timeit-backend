@@ -262,7 +262,8 @@ public class UserController {
             taskService.updateTask(taskUp);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            System.out.println(e);
+            return new ResponseEntity<>(e,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
