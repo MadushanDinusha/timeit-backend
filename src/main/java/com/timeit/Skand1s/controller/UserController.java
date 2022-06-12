@@ -252,6 +252,19 @@ public class UserController {
         }
     }
 
+    @PostMapping("updateTask")
+    public ResponseEntity<?> updateTasks(@RequestBody Task task){
+        try{
+            Task taskUp = taskService.getTaskById(task.getId());
+            taskUp.setUser(task.getUser());
+            taskUp.setFromDate(task.getFromDate());
+            taskUp.setToDate(task.getToDate());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/save/vacation/{name}")
     public ResponseEntity<?> saveVacation(@PathVariable("name") String name, @RequestBody Vacation vacation) {
         try {

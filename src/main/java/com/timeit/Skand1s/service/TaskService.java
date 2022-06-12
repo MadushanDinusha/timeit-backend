@@ -14,4 +14,5 @@ public interface TaskService {
     void updateTaskToDone(long id);
     int getMonthlyNumberOfTasks();
     List<Task> getAll();
+    Task getTaskById(long id);
 }
