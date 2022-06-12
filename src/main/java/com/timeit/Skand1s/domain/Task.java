@@ -29,7 +29,7 @@ public class Task {
     private Timestamp fromDate;
     private Timestamp toDate;
     private boolean isActive;
-
+    private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
@@ -83,6 +83,14 @@ public class Task {
         return user;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
@@ -91,6 +99,7 @@ public class Task {
                 ", fromDate=" + fromDate +
                 ", toDate=" + toDate +
                 ", isActive=" + isActive +
+                ", comment='" + comment + '\'' +
                 ", user=" + user +
                 '}';
     }
