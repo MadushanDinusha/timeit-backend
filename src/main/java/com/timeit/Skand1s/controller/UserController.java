@@ -259,10 +259,9 @@ public class UserController {
             taskUp.setUser(task.getUser());
             taskUp.setFromDate(task.getFromDate());
             taskUp.setToDate(task.getToDate());
-           Optional<User> user =  userService.getUserById(userService.getUserId(name));
-           taskUp.setUser(user.get());
+            Optional<User> user =  userService.getUserById(userService.getUserId(name));
+            taskUp.setUser(user.get());
             taskService.updateTask(taskUp);
-
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             System.out.println(e);
