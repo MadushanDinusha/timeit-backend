@@ -15,4 +15,5 @@ public interface TaskService {
     int getMonthlyNumberOfTasks();
     List<Task> getAll();
     Task getTaskById(long id);
+    Task updateTask(Task task);
 }

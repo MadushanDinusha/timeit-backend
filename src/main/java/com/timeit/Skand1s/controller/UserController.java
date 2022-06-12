@@ -259,6 +259,7 @@ public class UserController {
             taskUp.setUser(task.getUser());
             taskUp.setFromDate(task.getFromDate());
             taskUp.setToDate(task.getToDate());
+            taskService.updateTask(taskUp);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

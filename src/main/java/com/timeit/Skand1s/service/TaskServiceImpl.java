@@ -80,4 +80,9 @@ public class TaskServiceImpl implements TaskService{
     public Task getTaskById(long id) {
         return taskRepository.getById(id);
     }
+
+    @Override
+    public Task updateTask(Task task) {
+        return taskRepository.save(task);
+    }
 }
