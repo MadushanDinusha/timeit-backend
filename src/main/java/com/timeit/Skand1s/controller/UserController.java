@@ -376,7 +376,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("getNumberOfTasks")
+    @GetMapping("getNumberOfATasks")
     public ResponseEntity<Number> getMonthlyNumberOfTasks(){
         try {
             return new ResponseEntity<>(taskService.getMonthlyNumberOfTasks(),HttpStatus.OK);

@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/userOnVac").permitAll()
                 .antMatchers("/api/v1/getVacationDays/**").permitAll()
                 .antMatchers("/api/v1/getPending").permitAll()
-                .antMatchers("/api/v1/getNumberOfTasks").permitAll()
+                .antMatchers("/api/v1/getNumberOfATasks").permitAll()
                 .antMatchers("/api/v1/addSchedule/**").permitAll()
                 .antMatchers("/api/v1/getAllSchedule").permitAll()
                 .antMatchers("/api/v1/updateStatus/**").permitAll()
