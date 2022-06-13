@@ -68,6 +68,7 @@ public class TaskServiceImpl implements TaskService{
     @Override
     public int getMonthlyNumberOfTasks() {
         List<Task> tasks = taskRepository.getMonthlyTasks();
+        System.out.println(tasks);
         return tasks.size();
     }
 
