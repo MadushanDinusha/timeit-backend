@@ -38,6 +38,8 @@ public class UserController {
     ScheduleService scheduleService;
     @Autowired
     MailService mailService;
+    @Autowired
+    WorkService workService;
 
 
 
@@ -424,9 +426,20 @@ public class UserController {
     @PostMapping("saveWork/{userName}")
     public ResponseEntity<?> saveWork(@PathVariable("userName") String userName, @RequestBody Work work){
         try {
-            System.out.println(work);
-            System.out.println(userName);
+            Optional<User> user = userService.getUserById(userService.getUserId(userName));
+            work.setUser(user.get());
+            workService.saveWork(work);
             return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getWork")
+    public ResponseEntity<List<Work>> getWork(){
+        try {
+            List<Work> works = workService.getAll();
+            return new ResponseEntity<>(works,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
