@@ -8,4 +8,5 @@ public interface WorkService {
 
     void saveWork(Work work);
     List<Work> getAll();
+    Work getWorkUser(long user_id);
 }

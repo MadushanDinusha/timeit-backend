@@ -426,9 +426,10 @@ public class UserController {
     @PostMapping("saveWork/{userName}")
     public ResponseEntity<?> saveWork( @PathVariable("userName") String userName, @RequestBody Work work){
         try {
-
             Optional<User> user = userService.getUserById(userService.getUserId(userName));
             work.setUser(user.get());
+            System.out.println(work+" "+userName);
+
             workService.saveWork(work);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
@@ -441,6 +442,15 @@ public class UserController {
         try {
             List<Work> works = workService.getAll();
             return new ResponseEntity<>(works,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getWorksUser/{userName}")
+    public ResponseEntity<Work> getWorkUser(@PathVariable("userName") String userName){
+        try{
+            return new ResponseEntity<>(workService.getWorkUser(userService.getUserId(userName)),HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

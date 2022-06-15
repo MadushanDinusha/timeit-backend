@@ -51,6 +51,7 @@ public class Work {
         return "Work{" +
                 "work_id=" + work_id +
                 ", user=" + user +
+                ", shift=" + shift +
                 '}';
     }
 }
