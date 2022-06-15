@@ -19,6 +19,7 @@ public class Work {
         Afternoon,
         Evening
     }
+    private Shift shift;
 
     public Shift getShift() {
         return shift;
@@ -28,7 +29,6 @@ public class Work {
         this.shift = shift;
     }
 
-    private Shift shift;
 
     public long getWork_id() {
         return work_id;
