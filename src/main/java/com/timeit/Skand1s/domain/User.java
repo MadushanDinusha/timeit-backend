@@ -36,6 +36,9 @@ public class User {
     @OneToMany(mappedBy="user")
     private Set<Schedule> schedules;
 
+    @OneToOne(targetEntity=Work.class,cascade=CascadeType.ALL)
+    private Work work;
+
     public String getAdminMail() {
         return adminMail;
     }

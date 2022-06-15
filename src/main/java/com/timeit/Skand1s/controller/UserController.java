@@ -420,4 +420,14 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("saveWork/{userName}")
+    public ResponseEntity<?> saveWork(@PathVariable("userName") String userName, @RequestBody Work work){
+        try {
+            System.out.println(work);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
