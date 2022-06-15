@@ -428,6 +428,7 @@ public class UserController {
         try {
             Optional<User> user = userService.getUserById(userService.getUserId(userName));
             work.setUser(user.get());
+            System.out.println(work);
             workService.saveWork(work);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
