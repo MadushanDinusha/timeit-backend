@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().
                 disable().authorizeRequests()
                 .antMatchers("/api/v1/updateTask/**").permitAll()
+                .antMatchers("/api/v1/saveWork/**").permitAll()
                 .antMatchers("/api/v1/getUserCount").permitAll()
                 .antMatchers("/api/v1/userOnVac").permitAll()
                 .antMatchers("/api/v1/getVacationDays/**").permitAll()
