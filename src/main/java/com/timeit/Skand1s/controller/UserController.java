@@ -426,6 +426,7 @@ public class UserController {
     @PostMapping("saveWork/{userName}/{type}")
     public ResponseEntity<?> saveWork(@PathVariable("type") String type, @PathVariable("userName") String userName, @RequestBody Work work){
         try {
+            System.out.println(work);
 
             Optional<User> user = userService.getUserById(userService.getUserId(userName));
             work.setUser(user.get());

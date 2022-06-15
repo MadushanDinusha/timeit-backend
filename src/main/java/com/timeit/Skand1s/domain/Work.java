@@ -20,6 +20,14 @@ public class Work {
         Evening
     }
 
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
+    }
+
     private Shift shift;
 
     public long getWork_id() {
