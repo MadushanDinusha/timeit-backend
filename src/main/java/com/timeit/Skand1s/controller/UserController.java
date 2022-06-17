@@ -40,6 +40,8 @@ public class UserController {
     MailService mailService;
     @Autowired
     WorkService workService;
+    @Autowired
+    AdminWorkService adminWorkService;
 
 
 
@@ -451,6 +453,30 @@ public class UserController {
     public ResponseEntity<Work> getWorkUser(@PathVariable("userName") String userName){
         try{
             return new ResponseEntity<>(workService.getWorkUser(userService.getUserId(userName)),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("saveAdminWork")
+    public ResponseEntity<AdminWork> saveAdmin(@RequestBody AdminWork shiftType) {
+        try {
+            System.out.println(shiftType);
+//            System.out.println(adminWork);
+//            adminWorkService.saveAdminWork(adminWork);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("generate")
+    public ResponseEntity<?> generate(){
+        try {
+
+            int number = adminWorkService.getNumbersForDate("Mon","8-9");
+            System.out.println(number);
+            return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
