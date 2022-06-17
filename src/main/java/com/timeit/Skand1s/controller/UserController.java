@@ -462,7 +462,7 @@ public class UserController {
     public ResponseEntity<AdminWork> saveAdmin(@RequestBody AdminWork shiftType) {
         try {
             System.out.println(shiftType);
-//            System.out.println(adminWork);
+            System.out.println("woring");
 //            adminWorkService.saveAdminWork(adminWork);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
