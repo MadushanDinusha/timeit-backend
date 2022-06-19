@@ -62,7 +62,10 @@ public class WorkServiceImpl implements WorkService{
                 Optional<Vacation> vacation = Optional.ofNullable(vacationRepository.checkHoliday(id));
                 int toValue = sdf.format(vacation.get().getToDate()).compareTo(sdf.format(getSysDate()));
                 int fromValue = sdf.format(vacation.get().getFromDate()).compareTo(sdf.format(getSysDate()));
-                if ((toValue>=0 && fromValue >=0 )) {
+                System.out.println(id);
+                System.out.println(toValue);
+                System.out.println(fromValue);
+                if ((fromValue <=0 && toValue>=0  )) {
 
                 }else{
                     if(checkMeeting(id)){
