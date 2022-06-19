@@ -92,7 +92,7 @@ public class WorkServiceImpl implements WorkService{
         List<Task> tasks = taskRepository.getTasksByUserId(id,true);
         for (Task task : tasks){
             System.out.println(task);
-           if(task.getType().equals(Task.Type.Meeting)){
+           if(task.getType().equals(Task.Type.Meeting)||task.getType().equals(Task.Type.Phone)){
               return false;
            }
 
