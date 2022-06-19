@@ -58,7 +58,7 @@ public class WorkServiceImpl implements WorkService{
             Vacation vacation = vacationRepository.checkHoliday(id);
             int toValue = sdf.format(vacation.getToDate()).compareTo(sdf.format(getSysDate()));
             int fromValue = sdf.format(vacation.getFromDate()).compareTo(sdf.format(getSysDate()));
-            if (toValue>=0 && fromValue >=0 && !checkMeeting(id)){
+            if (toValue>=0 && fromValue >=0){
 
             }else{
                 noHoliday.add(work);
@@ -69,11 +69,11 @@ public class WorkServiceImpl implements WorkService{
         return noHoliday;
     }
 
-    boolean checkMeeting(long id){
-        if(taskRepository.getTasksByUserId(id,true) != null){
-            return false;
-        }else {
-            return true;
-        }
-    }
+//    boolean checkMeeting(long id){
+//        if(taskRepository.getTasksByUserId(id,true) != null){
+//            return false;
+//        }else {
+//            return true;
+//        }
+//    }
 }
