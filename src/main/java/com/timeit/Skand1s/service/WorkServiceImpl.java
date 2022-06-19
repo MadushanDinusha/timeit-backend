@@ -7,6 +7,10 @@ import com.timeit.Skand1s.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,19 +38,32 @@ public class WorkServiceImpl implements WorkService{
         return workRepository.getWorkUser(user_id);
     }
 
+    public Timestamp getSysDate(){
+        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now());
+        return now;
+    }
+
     @Override
     public List<Work> getAll() {
         List<Work> workList = workRepository.findAll();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        List<Work> noHoliday = new ArrayList<>();
+
         for(Work work : workList){
             long id = work.getUser().getId();
-            checkHoliday(id);
+            Vacation vacation = vacationRepository.checkHoliday(id);
+            int toValue = sdf.format(vacation.getToDate()).compareTo(sdf.format(getSysDate()));
+            int fromValue = sdf.format(vacation.getFromDate()).compareTo(sdf.format(getSysDate()));
+            if (toValue>=0 && fromValue >=0){
+
+            }else{
+                noHoliday.add(work);
+            }
         }
-        return null;
+        System.out.println(noHoliday);
+        return noHoliday;
     }
 
-    public boolean checkHoliday(long id){
-     Vacation vacation = vacationRepository.checkHoliday(id);
-        System.out.println(vacation);
-     return true;
-    }
+
 }
