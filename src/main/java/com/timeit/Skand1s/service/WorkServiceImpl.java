@@ -1,6 +1,8 @@
 package com.timeit.Skand1s.service;
 
+import com.timeit.Skand1s.domain.Vacation;
 import com.timeit.Skand1s.domain.Work;
+import com.timeit.Skand1s.repository.VacationRepository;
 import com.timeit.Skand1s.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ public class WorkServiceImpl implements WorkService{
 
     @Autowired
     WorkRepository workRepository;
+    @Autowired
+    VacationRepository vacationRepository;
 
     @Override
     public void saveWork(Work work) {
@@ -32,6 +36,17 @@ public class WorkServiceImpl implements WorkService{
 
     @Override
     public List<Work> getAll() {
-        return workRepository.findAll();
+        List<Work> workList = workRepository.findAll();
+        for(Work work : workList){
+            long id = work.getUser().getId();
+            checkHoliday(id);
+        }
+        return null;
+    }
+
+    public boolean checkHoliday(long id){
+     Vacation vacation = vacationRepository.checkHoliday(id);
+        System.out.println(vacation);
+     return true;
     }
 }

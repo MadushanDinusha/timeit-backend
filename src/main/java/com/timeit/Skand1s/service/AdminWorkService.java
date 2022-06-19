@@ -1,7 +1,10 @@
 package com.timeit.Skand1s.service;
 import  com.timeit.Skand1s.domain.AdminWork;
+
+import java.util.List;
+
 public interface AdminWorkService {
 
     void saveAdminWork(AdminWork adminWork);
-    int getNumbersForDate(String date, String shift);
+    List<Integer> getNumbersForDate();
 }

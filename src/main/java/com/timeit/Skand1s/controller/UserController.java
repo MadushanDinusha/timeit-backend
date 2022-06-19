@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.sql.Timestamp;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -462,8 +463,8 @@ public class UserController {
     public ResponseEntity<AdminWork> saveAdmin(@RequestBody AdminWork shiftType) {
         try {
             System.out.println(shiftType);
-            System.out.println("woring");
-//            adminWorkService.saveAdminWork(adminWork);
+            shiftType.setAdmin_work_id(1);
+            adminWorkService.saveAdminWork(shiftType);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -471,12 +472,10 @@ public class UserController {
     }
 
     @GetMapping("generate")
-    public ResponseEntity<?> generate(){
+    public ResponseEntity<List<Integer>> generate(){
         try {
-
-            int number = adminWorkService.getNumbersForDate("Mon","8-9");
-            System.out.println(number);
-            return new ResponseEntity<>(HttpStatus.OK);
+           List<Integer> integerList = adminWorkService.getNumbersForDate();
+            return new ResponseEntity<>(integerList,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
