@@ -2,6 +2,7 @@ package com.timeit.Skand1s.service;
 
 import com.timeit.Skand1s.domain.Vacation;
 import com.timeit.Skand1s.domain.Work;
+import com.timeit.Skand1s.repository.TaskRepository;
 import com.timeit.Skand1s.repository.VacationRepository;
 import com.timeit.Skand1s.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class WorkServiceImpl implements WorkService{
     WorkRepository workRepository;
     @Autowired
     VacationRepository vacationRepository;
+    @Autowired
+    TaskRepository taskRepository;
 
     @Override
     public void saveWork(Work work) {
@@ -55,15 +58,22 @@ public class WorkServiceImpl implements WorkService{
             Vacation vacation = vacationRepository.checkHoliday(id);
             int toValue = sdf.format(vacation.getToDate()).compareTo(sdf.format(getSysDate()));
             int fromValue = sdf.format(vacation.getFromDate()).compareTo(sdf.format(getSysDate()));
-            if (toValue>=0 && fromValue >=0){
+            if (toValue>=0 && fromValue >=0 && !checkMeeting(id)){
 
             }else{
                 noHoliday.add(work);
             }
         }
         System.out.println(noHoliday);
+
         return noHoliday;
     }
 
-
+    boolean checkMeeting(long id){
+        if(taskRepository.getTasksByUserId(id,true) != null){
+            return false;
+        }else {
+            return true;
+        }
+    }
 }
