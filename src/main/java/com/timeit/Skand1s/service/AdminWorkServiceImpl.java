@@ -142,13 +142,41 @@ public class AdminWorkServiceImpl implements AdminWorkService {
         int evening = 0;
 
         if (today.equals("mon")){
-            System.out.println("monday");
            morning =  adminWork.getMon89() + adminWork.getMon910();
            afternoon = adminWork.getMon1011()+adminWork.getMon1112()+adminWork.getMon1213();
            evening = adminWork.getMon1314()+adminWork.getMon1415()+adminWork.getMon1516();
            adminList.add(morning);
            adminList.add(afternoon);
            adminList.add(evening);
+        }
+        else if (today.equals("tue")){
+            morning =  adminWork.getTue89() + adminWork.getTue910();
+            afternoon = adminWork.getTue1011()+adminWork.getTue1112()+adminWork.getTue1213();
+            evening = adminWork.getTue1314()+adminWork.getTue1415()+adminWork.getTue1516();
+            adminList.add(morning);
+            adminList.add(afternoon);
+            adminList.add(evening);
+        }else if (today.equals("wed")){
+            morning =  adminWork.getWed89() + adminWork.getWed910();
+            afternoon = adminWork.getWed1011()+adminWork.getWed1112()+adminWork.getWed1213();
+            evening = adminWork.getWed1314()+adminWork.getWed1415()+adminWork.getWed1516();
+            adminList.add(morning);
+            adminList.add(afternoon);
+            adminList.add(evening);
+        }else if (today.equals("thu")){
+            morning =  adminWork.getThu89() + adminWork.getThu910();
+            afternoon = adminWork.getThu1011()+adminWork.getThu1112()+adminWork.getThu1213();
+            evening = adminWork.getThu1314()+adminWork.getThu1415()+adminWork.getThu1516();
+            adminList.add(morning);
+            adminList.add(afternoon);
+            adminList.add(evening);
+        }else if (today.equals("fri")){
+            morning =  adminWork.getFri89() + adminWork.getFri910();
+            afternoon = adminWork.getFri1011()+adminWork.getFri1112()+adminWork.getFri1213();
+            evening = adminWork.getFri1314()+adminWork.getFri1415()+adminWork.getFri1516();
+            adminList.add(morning);
+            adminList.add(afternoon);
+            adminList.add(evening);
         }
         return adminList;
     }
