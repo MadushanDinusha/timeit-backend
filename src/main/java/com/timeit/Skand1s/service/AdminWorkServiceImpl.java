@@ -152,4 +152,9 @@ public class AdminWorkServiceImpl implements AdminWorkService {
         }
         return adminList;
     }
+
+    @Override
+    public List<AdminWork> getAll() {
+        return adminWorkRepository.findAll();
+    }
 }

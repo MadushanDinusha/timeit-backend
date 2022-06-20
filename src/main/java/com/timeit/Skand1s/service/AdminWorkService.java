@@ -8,4 +8,6 @@ public interface AdminWorkService {
     void saveAdminWork(AdminWork adminWork);
     List<Integer> getNumbersForDate();
     List<Integer>  getPhones();
+    List<AdminWork> getAll();
+
 }

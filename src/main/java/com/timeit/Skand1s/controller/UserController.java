@@ -483,11 +483,20 @@ public class UserController {
         }
     }
 
-    @GetMapping("getAdminWork")
-    public ResponseEntity<List<AdminWork>> getAllAdminWork(){
+    @GetMapping("getAllAdmin")
+    public ResponseEntity<List<AdminWork>> getAllAdmin(){
         try {
-            adminWorkService.getPhones();
-            return new ResponseEntity<>(HttpStatus.OK);
+
+            return new ResponseEntity<>(adminWorkService.getAll(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getAdminWork")
+    public ResponseEntity<List<Integer>> getAllAdminWork(){
+        try {
+            return new ResponseEntity<>(adminWorkService.getPhones(),HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

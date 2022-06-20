@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().
                 disable().authorizeRequests()
+                .antMatchers("/api/v1/getAdminWork").permitAll()
+                .antMatchers("/api/v1/getAllAdmin").permitAll()
                 .antMatchers("/api/v1/saveAdminWork/**").permitAll()
                 .antMatchers("/api/v1/getWork").permitAll()
                 .antMatchers("/api/v1/getWorksUser/**").permitAll()
