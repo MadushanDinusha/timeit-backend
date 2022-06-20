@@ -97,6 +97,7 @@ public class WorkServiceImpl implements WorkService{
            ||task.getType().equals(Task.Type.Syg)||task.getType().equals(Task.Type.Andet)){
               return false;
            }
+
         }
         return true;
     }
