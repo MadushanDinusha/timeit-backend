@@ -145,7 +145,7 @@ public class AdminWorkServiceImpl implements AdminWorkService {
             System.out.println("monday");
            morning =  adminWork.getMon89() + adminWork.getMon910();
            afternoon = adminWork.getMon1011()+adminWork.getMon1112()+adminWork.getMon1213();
-           evening = adminWork.getMon1314()+adminWork.getMon1415()+adminWork.getMon1516()+adminWork.getMon1617();
+           evening = adminWork.getMon1314()+adminWork.getMon1415()+adminWork.getMon1516();
            adminList.add(morning);
            adminList.add(afternoon);
            adminList.add(evening);
