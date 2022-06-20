@@ -127,4 +127,29 @@ public class AdminWorkServiceImpl implements AdminWorkService {
 
         return returnList;
     }
+
+    public List<Integer> getPhones(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Format f = new SimpleDateFormat("EEEE");
+        String str = f.format(new Date());
+        String today = str.toLowerCase(Locale.ROOT).substring(0,3);
+        List<AdminWork> adminWorkList = adminWorkRepository.findAll();
+        AdminWork adminWork = adminWorkList.get(0);
+        List<Integer> adminList = new ArrayList<>();
+        int morning = 0;
+        int afternoon = 0;
+        int evening = 0;
+
+        if (today.equals("mon")){
+            System.out.println("monday");
+           morning =  adminWork.getMon89() + adminWork.getMon910();
+           afternoon = adminWork.getMon1011()+adminWork.getMon1112()+adminWork.getMon1213();
+           evening = adminWork.getMon1314()+adminWork.getMon1415()+adminWork.getMon1516()+adminWork.getMon1617();
+           adminList.add(morning);
+           adminList.add(afternoon);
+           adminList.add(evening);
+        }
+        return adminList;
+    }
 }
