@@ -131,7 +131,86 @@ public class WorkServiceImpl implements WorkService{
             }
 
         }
+        else if(work.getShift().equals(Work.Shift.Afternoon)){
 
+            Calendar cal1 = Calendar.getInstance();
+            LocalDateTime now = LocalDateTime.now();
+            cal1.set(Calendar.YEAR,now.getYear());
+            cal1.set(Calendar.MONTH,now.getMonthValue() -1);
+            cal1.set(Calendar.HOUR_OF_DAY,8);
+            cal1.set(Calendar.MINUTE,0);
+            cal1.set(Calendar.SECOND,0);
+            cal1.set(Calendar.MILLISECOND,0);
+            Date d1 = cal1.getTime();
+            Calendar cal2 = Calendar.getInstance();
+            cal2.set(Calendar.HOUR_OF_DAY,10);
+            cal2.set(Calendar.MINUTE,0);
+            cal2.set(Calendar.SECOND,0);
+            cal2.set(Calendar.MILLISECOND,0);
+            Date d2 = cal2.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MMMM-dd");
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+            sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+            time1 = sdf.format(d1);
+            time2 = sdf.format(d2);
+
+            for (Task t : taskList) {
+                if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
+                    time1_1=sdf.format(t.getFromDate());
+                    time2_2 = sdf.format(t.getToDate());
+                    System.out.println("date match");
+                    if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
+                        System.out.println("falsessss");
+                        return false;
+                    }
+                }
+
+            }
+
+        }
+        else if(work.getShift().equals(Work.Shift.Evening)){
+
+            Calendar cal1 = Calendar.getInstance();
+            LocalDateTime now = LocalDateTime.now();
+            cal1.set(Calendar.YEAR,now.getYear());
+            cal1.set(Calendar.MONTH,now.getMonthValue() -1);
+            cal1.set(Calendar.HOUR_OF_DAY,8);
+            cal1.set(Calendar.MINUTE,0);
+            cal1.set(Calendar.SECOND,0);
+            cal1.set(Calendar.MILLISECOND,0);
+            Date d1 = cal1.getTime();
+            Calendar cal2 = Calendar.getInstance();
+            cal2.set(Calendar.HOUR_OF_DAY,10);
+            cal2.set(Calendar.MINUTE,0);
+            cal2.set(Calendar.SECOND,0);
+            cal2.set(Calendar.MILLISECOND,0);
+            Date d2 = cal2.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MMMM-dd");
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+            sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+            time1 = sdf.format(d1);
+            time2 = sdf.format(d2);
+
+            for (Task t : taskList) {
+                if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
+                    time1_1=sdf.format(t.getFromDate());
+                    time2_2 = sdf.format(t.getToDate());
+                    System.out.println("date match");
+                    if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
+                        System.out.println("falsessss");
+                        return false;
+                    }
+                }
+
+            }
+
+        }
 
 //        List<Task> tasks = taskRepository.getTasksByUserId(id,true);
 //        for (Task task : tasks){
