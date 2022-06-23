@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class WorkServiceImpl implements WorkService{
@@ -26,6 +23,8 @@ public class WorkServiceImpl implements WorkService{
     VacationRepository vacationRepository;
     @Autowired
     TaskRepository taskRepository;
+    @Autowired
+    TaskService taskService;
 
     @Override
     public void saveWork(Work work) {
@@ -62,43 +61,72 @@ public class WorkServiceImpl implements WorkService{
                 Optional<Vacation> vacation = Optional.ofNullable(vacationRepository.checkHoliday(id));
                 int toValue = sdf.format(vacation.get().getToDate()).compareTo(sdf.format(getSysDate()));
                 int fromValue = sdf.format(vacation.get().getFromDate()).compareTo(sdf.format(getSysDate()));
-                System.out.println(id);
-                System.out.println(toValue);
-                System.out.println(fromValue);
                 if ((fromValue <=0 && toValue>=0  )) {
 
                 }else{
-                    if(checkMeeting(id)){
+                    if(checkMeeting(id,work.getUser().getUsername())){
                         noHoliday.add(work);
                     }
                 }
             }catch (NoSuchElementException e){
-                if(checkMeeting(id)){
+                if(checkMeeting(id,work.getUser().getUsername())){
                     noHoliday.add(work);
                 }
 
             }
 
-
-
         }
-
-        System.out.println(noHoliday);
-
         return noHoliday;
     }
 
-    boolean checkMeeting(long id){
-        List<Task> tasks = taskRepository.getTasksByUserId(id,true);
-        for (Task task : tasks){
-            System.out.println(task);
-           if(task.getType().equals(Task.Type.Meeting)||task.getType().equals(Task.Type.Phone)||task.getType().equals(Task.Type.HO)||
-                   task.getType().equals(Task.Type.Mails)||task.getType().equals(Task.Type.BBØ)||task.getType().equals(Task.Type.Fri)
-           ||task.getType().equals(Task.Type.Syg)||task.getType().equals(Task.Type.Andet)){
-              return false;
-           }
+    boolean checkMeeting(long id,String name){
+        List<Task> taskList = taskService.getUserTasks(name);
+        List<Task> sortedByFromDate = new ArrayList<>();
+
+        Work work = workRepository.getWorkUser(id);
+        work.getShift().name();
+        String time1;
+        String time2;
+        String time1_1;
+        String time2_2;
+        if(work.getShift().equals(Work.Shift.Morning)){
+            Calendar cal1 = Calendar.getInstance();
+            cal1.set(Calendar.HOUR_OF_DAY,11);
+            cal1.set(Calendar.MINUTE,0);
+            cal1.set(Calendar.SECOND,0);
+            cal1.set(Calendar.MILLISECOND,0);
+            Date d1 = cal1.getTime();
+            Calendar cal2 = Calendar.getInstance();
+            cal2.set(Calendar.HOUR_OF_DAY,13);
+            cal2.set(Calendar.MINUTE,0);
+            cal2.set(Calendar.SECOND,0);
+            cal2.set(Calendar.MILLISECOND,0);
+            Date d2 = cal2.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+            time1 = sdf.format(d1);
+            time2 = sdf.format(d2);
+            for (Task t : taskList) {
+                time1_1=sdf.format(t.getFromDate());
+                time2_2 = sdf.format(t.getToDate());
+                System.out.println(time1);
+                if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
+                    return false;
+                }
+            }
 
         }
+
+
+        List<Task> tasks = taskRepository.getTasksByUserId(id,true);
+//        for (Task task : tasks){
+//           if(task.getType().equals(Task.Type.Meeting)||task.getType().equals(Task.Type.Phone)||task.getType().equals(Task.Type.HO)||
+//                   task.getType().equals(Task.Type.Mails)||task.getType().equals(Task.Type.BBØ)||task.getType().equals(Task.Type.Fri)
+//           ||task.getType().equals(Task.Type.Syg)||task.getType().equals(Task.Type.Andet)){
+//              return false;
+//           }
+//
+//        }
         return true;
     }
 }
