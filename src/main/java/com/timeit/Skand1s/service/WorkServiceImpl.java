@@ -111,6 +111,7 @@ public class WorkServiceImpl implements WorkService{
                 time2_2 = sdf.format(t.getToDate());
                 System.out.println(time1);
                 if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
+                    System.out.println("falsessss");
                     return false;
                 }
             }
@@ -118,7 +119,7 @@ public class WorkServiceImpl implements WorkService{
         }
 
 
-        List<Task> tasks = taskRepository.getTasksByUserId(id,true);
+//        List<Task> tasks = taskRepository.getTasksByUserId(id,true);
 //        for (Task task : tasks){
 //           if(task.getType().equals(Task.Type.Meeting)||task.getType().equals(Task.Type.Phone)||task.getType().equals(Task.Type.HO)||
 //                   task.getType().equals(Task.Type.Mails)||task.getType().equals(Task.Type.BBØ)||task.getType().equals(Task.Type.Fri)
