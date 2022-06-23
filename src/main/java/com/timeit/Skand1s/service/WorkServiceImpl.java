@@ -9,10 +9,12 @@ import com.timeit.Skand1s.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 
 @Service
 public class WorkServiceImpl implements WorkService{
@@ -91,6 +93,10 @@ public class WorkServiceImpl implements WorkService{
         String time2_2;
         if(work.getShift().equals(Work.Shift.Morning)){
             Calendar cal1 = Calendar.getInstance();
+            LocalDateTime now = LocalDateTime.now();
+            cal1.set(Calendar.YEAR,now.getYear());
+            cal1.set(Calendar.MONTH,now.getMonthValue());
+            System.out.println(now.getDayOfWeek());
             cal1.set(Calendar.HOUR_OF_DAY,8);
             cal1.set(Calendar.MINUTE,0);
             cal1.set(Calendar.SECOND,0);
@@ -102,6 +108,9 @@ public class WorkServiceImpl implements WorkService{
             cal2.set(Calendar.SECOND,0);
             cal2.set(Calendar.MILLISECOND,0);
             Date d2 = cal2.getTime();
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+            System.out.println(sdf1.format(d1));
+            System.out.println(now.getMonth());
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
             time1 = sdf.format(d1);
