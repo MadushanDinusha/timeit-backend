@@ -91,13 +91,13 @@ public class WorkServiceImpl implements WorkService{
         String time2_2;
         if(work.getShift().equals(Work.Shift.Morning)){
             Calendar cal1 = Calendar.getInstance();
-            cal1.set(Calendar.HOUR_OF_DAY,11);
+            cal1.set(Calendar.HOUR_OF_DAY,8);
             cal1.set(Calendar.MINUTE,0);
             cal1.set(Calendar.SECOND,0);
             cal1.set(Calendar.MILLISECOND,0);
             Date d1 = cal1.getTime();
             Calendar cal2 = Calendar.getInstance();
-            cal2.set(Calendar.HOUR_OF_DAY,13);
+            cal2.set(Calendar.HOUR_OF_DAY,10);
             cal2.set(Calendar.MINUTE,0);
             cal2.set(Calendar.SECOND,0);
             cal2.set(Calendar.MILLISECOND,0);
