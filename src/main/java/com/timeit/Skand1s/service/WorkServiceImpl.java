@@ -92,11 +92,11 @@ public class WorkServiceImpl implements WorkService{
         String time1_1;
         String time2_2;
         if(work.getShift().equals(Work.Shift.Morning)){
+
             Calendar cal1 = Calendar.getInstance();
             LocalDateTime now = LocalDateTime.now();
             cal1.set(Calendar.YEAR,now.getYear());
-            cal1.set(Calendar.MONTH,now.getMonthValue());
-            System.out.println(now.getDayOfWeek());
+            cal1.set(Calendar.MONTH,now.getMonthValue() -1);
             cal1.set(Calendar.HOUR_OF_DAY,8);
             cal1.set(Calendar.MINUTE,0);
             cal1.set(Calendar.SECOND,0);
@@ -108,21 +108,26 @@ public class WorkServiceImpl implements WorkService{
             cal2.set(Calendar.SECOND,0);
             cal2.set(Calendar.MILLISECOND,0);
             Date d2 = cal2.getTime();
-            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-            System.out.println(sdf1.format(d1));
-            System.out.println(now.getMonth());
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MMMM-dd");
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+            sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
+
             time1 = sdf.format(d1);
             time2 = sdf.format(d2);
+
             for (Task t : taskList) {
-                time1_1=sdf.format(t.getFromDate());
-                time2_2 = sdf.format(t.getToDate());
-                System.out.println(time1);
-                if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
-                    System.out.println("falsessss");
-                    return false;
+                if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
+                    time1_1=sdf.format(t.getFromDate());
+                    time2_2 = sdf.format(t.getToDate());
+                    System.out.println("date match");
+                    if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
+                        System.out.println("falsessss");
+                        return false;
+                    }
                 }
+
             }
 
         }
