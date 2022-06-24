@@ -122,8 +122,8 @@ public class WorkServiceImpl implements WorkService{
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
-                    System.out.println("ss"+time1_1);
-                    System.out.println("ss"+time2_2);
+                    System.out.println("mo"+time1_1);
+                    System.out.println("mo"+time2_2+" "+t.getUser().getUsername());
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
                         System.out.println("sssssssssssssssssssssssssssssssssssss");
                         return false;
@@ -164,8 +164,8 @@ public class WorkServiceImpl implements WorkService{
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
-                    System.out.println("ss"+time1_1);
-                    System.out.println("ss"+time2_2);
+                    System.out.println("af"+time1_1);
+                    System.out.println("af"+time2_2+" "+t.getUser().getUsername());
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
                         return false;
                     }
@@ -205,8 +205,8 @@ public class WorkServiceImpl implements WorkService{
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
-                    System.out.println("ss"+time1_1);
-                    System.out.println("ss"+time2_2);
+                    System.out.println("ev"+time1_1);
+                    System.out.println("ev"+time2_2+" "+t.getUser().getUsername());
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
                         return false;
                     }
