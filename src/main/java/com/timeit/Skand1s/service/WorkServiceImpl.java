@@ -116,11 +116,14 @@ public class WorkServiceImpl implements WorkService{
 
             time1 = sdf.format(d1);
             time2 = sdf.format(d2);
-
+            System.out.println(time1);
+            System.out.println(time2);
             for (Task t : taskList) {
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
+                    System.out.println("ss"+time1_1);
+                    System.out.println("ss"+time2_2);
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
                         System.out.println("sssssssssssssssssssssssssssssssssssss");
                         return false;
@@ -155,11 +158,14 @@ public class WorkServiceImpl implements WorkService{
 
             time1 = sdf.format(d1);
             time2 = sdf.format(d2);
-
+            System.out.println(time1);
+            System.out.println(time2);
             for (Task t : taskList) {
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
+                    System.out.println("ss"+time1_1);
+                    System.out.println("ss"+time2_2);
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
                         return false;
                     }
@@ -193,11 +199,14 @@ public class WorkServiceImpl implements WorkService{
 
             time1 = sdf.format(d1);
             time2 = sdf.format(d2);
-
+            System.out.println(time1);
+            System.out.println(time2);
             for (Task t : taskList) {
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
+                    System.out.println("ss"+time1_1);
+                    System.out.println("ss"+time2_2);
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
                         return false;
                     }
