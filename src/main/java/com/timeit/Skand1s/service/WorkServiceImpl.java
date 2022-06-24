@@ -124,8 +124,9 @@ public class WorkServiceImpl implements WorkService{
                     time2_2 = sdf.format(t.getToDate());
                     System.out.println("mo"+time1_1);
                     System.out.println("mo"+time2_2+" "+t.getUser().getUsername());
+                    System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
+
                     if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
-                        System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
 
                         System.out.println("moooooooooooooooooooooooooooooooooooooooooooooooo");
                         return false;
@@ -168,8 +169,9 @@ public class WorkServiceImpl implements WorkService{
                     time2_2 = sdf.format(t.getToDate());
                     System.out.println("af"+time1_1);
                     System.out.println("af"+time2_2+" "+t.getUser().getUsername());
+                    System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
+
                     if(time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0){
-                        System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
                         System.out.println("afffffffffffff");
 
                         return false;
@@ -212,8 +214,9 @@ public class WorkServiceImpl implements WorkService{
                     time2_2 = sdf.format(t.getToDate());
                     System.out.println("ev"+time1_1);
                     System.out.println("ev"+time2_2+" "+t.getUser().getUsername());
+                    System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
+
                     if(time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0){
-                        System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
                         System.out.println("evvvvvvvvvv");
 
                         return false;
