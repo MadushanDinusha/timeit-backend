@@ -133,7 +133,7 @@ public class WorkServiceImpl implements WorkService{
             }
 
         }
-        else if(work.getShift().equals(Work.Shift.Afternoon)){
+        if(work.getShift().equals(Work.Shift.Afternoon)){
 
             Calendar cal1 = Calendar.getInstance();
             LocalDateTime now = LocalDateTime.now();
@@ -174,7 +174,7 @@ public class WorkServiceImpl implements WorkService{
             }
 
         }
-        else if(work.getShift().equals(Work.Shift.Evening)){
+         if(work.getShift().equals(Work.Shift.Evening)){
 
             Calendar cal1 = Calendar.getInstance();
             LocalDateTime now = LocalDateTime.now();
