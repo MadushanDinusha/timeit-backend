@@ -23,7 +23,6 @@ public class AdminWorkServiceImpl implements AdminWorkService {
     @Override
     public void saveAdminWork(AdminWork adminWork) {
       try{
-          System.out.println(adminWork);
           adminWorkRepository.save(adminWork);
       }catch (Exception e){
 

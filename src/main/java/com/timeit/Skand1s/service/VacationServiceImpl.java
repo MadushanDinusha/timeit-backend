@@ -90,7 +90,6 @@ public class VacationServiceImpl implements VacationService {
             int fromValue = sdf.format(vacation.getFromDate()).compareTo(sdf.format(getSysDate()));
             if( fromValue <=0 && toValue>=0){
                 onGoingVac.add(vacation);
-                System.out.println(vacation);
             }else if(toValue <=0){
                 vacation.setStatus(Vacation.Status.Done);
                 upDateVacation(vacation);

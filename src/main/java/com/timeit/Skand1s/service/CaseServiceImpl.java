@@ -18,7 +18,6 @@ public class CaseServiceImpl implements CaseService {
 
     @Override
     public void saveCase(Case cases) {
-        System.out.println(cases);
       caseRepository.save(cases);
     }
 
