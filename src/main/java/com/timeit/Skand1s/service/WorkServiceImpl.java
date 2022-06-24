@@ -103,8 +103,8 @@ public class WorkServiceImpl implements WorkService{
             cal1.set(Calendar.MILLISECOND,0);
             Date d1 = cal1.getTime();
             Calendar cal2 = Calendar.getInstance();
-            cal2.set(Calendar.HOUR_OF_DAY,10);
-            cal2.set(Calendar.MINUTE,0);
+            cal2.set(Calendar.HOUR_OF_DAY,9);
+            cal2.set(Calendar.MINUTE,59);
             cal2.set(Calendar.SECOND,0);
             cal2.set(Calendar.MILLISECOND,0);
             Date d2 = cal2.getTime();
@@ -141,8 +141,8 @@ public class WorkServiceImpl implements WorkService{
             cal1.set(Calendar.MILLISECOND,0);
             Date d1 = cal1.getTime();
             Calendar cal2 = Calendar.getInstance();
-            cal2.set(Calendar.HOUR_OF_DAY,13);
-            cal2.set(Calendar.MINUTE,0);
+            cal2.set(Calendar.HOUR_OF_DAY,12);
+            cal2.set(Calendar.MINUTE,59);
             cal2.set(Calendar.SECOND,0);
             cal2.set(Calendar.MILLISECOND,0);
             Date d2 = cal2.getTime();
@@ -179,8 +179,8 @@ public class WorkServiceImpl implements WorkService{
             cal1.set(Calendar.MILLISECOND,0);
             Date d1 = cal1.getTime();
             Calendar cal2 = Calendar.getInstance();
-            cal2.set(Calendar.HOUR_OF_DAY,16);
-            cal2.set(Calendar.MINUTE,0);
+            cal2.set(Calendar.HOUR_OF_DAY,15);
+            cal2.set(Calendar.MINUTE,59);
             cal2.set(Calendar.SECOND,0);
             cal2.set(Calendar.MILLISECOND,0);
             Date d2 = cal2.getTime();
