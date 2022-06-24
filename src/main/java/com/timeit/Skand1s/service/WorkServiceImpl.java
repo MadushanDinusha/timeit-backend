@@ -126,7 +126,8 @@ public class WorkServiceImpl implements WorkService{
                     System.out.println("mo"+time2_2+" "+t.getUser().getUsername());
                     System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
 
-                    if(time1.compareTo(time1_1)<=0 &&time2.compareTo(time2_2)>=0){
+                    if((time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)<=0) || (time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0)){
+
 
                         System.out.println("moooooooooooooooooooooooooooooooooooooooooooooooo");
                         return false;
@@ -171,7 +172,8 @@ public class WorkServiceImpl implements WorkService{
                     System.out.println("af"+time2_2+" "+t.getUser().getUsername());
                     System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
 
-                    if(time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0){
+                    if((time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)<=0) || (time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0)){
+
                         System.out.println("afffffffffffff");
 
                         return false;
@@ -216,7 +218,7 @@ public class WorkServiceImpl implements WorkService{
                     System.out.println("ev"+time2_2+" "+t.getUser().getUsername());
                     System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
 
-                    if(time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0){
+                    if((time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)<=0) || (time1.compareTo(time1_1)<=0 && time2.compareTo(time2_2)>=0)){
                         System.out.println("evvvvvvvvvv");
 
                         return false;
