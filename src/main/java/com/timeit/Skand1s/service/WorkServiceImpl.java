@@ -212,7 +212,7 @@ public class WorkServiceImpl implements WorkService{
                 if(sdf1.format(d1).compareTo(sdf1.format(t.getFromDate()))==0){
                     time1_1=sdf.format(t.getFromDate());
                     time2_2 = sdf.format(t.getToDate());
-                    System.out.println("ev"+time1_1);
+                    System.out.println("ev"+time1);
                     System.out.println("ev"+time2_2+" "+t.getUser().getUsername());
                     System.out.println(time1.compareTo(time1_1) +" "+time2.compareTo(time2_2));
 
